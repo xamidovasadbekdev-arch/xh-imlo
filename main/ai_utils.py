@@ -12,22 +12,22 @@ def get_word_variants(word):
         messages=[{
             "role": "user",
             "content": f"""
-O'zbek tilida "{word}" so'zining to'g'ri va noto'g'ri yozilishini ber.
-Faqat X va H harflari bilan bog'liq imlo xatolari haqida.
-Masalan: "halovat" to'g'ri, "xalovat" noto'g'ri.
+Sen o'zbek tili imlo mutaxassisisan.
+"{word}" so'zining X va H harflari bilan bog'liq 
+to'g'ri imlosini O'zbek tilining rasmiy imlo qoidalari 
+asosida aniqla.
 
-FAQAT JSON formatda qaytar, boshqa hech narsa yozma:
+Masalan:
+- "halovat" TO'G'RI, "xalovat" NOTO'G'RI
+- "xurmo" TO'G'RI, "hurmo" NOTO'G'RI  
+- "xizmat" TO'G'RI, "hizmat" NOTO'G'RI
+
+FAQAT JSON formatda qaytar:
 {{
     "correct": "to'g'ri yozilishi",
-    "incorrects": ["noto'g'ri variant 1", "noto'g'ri variant 2"]
+    "incorrects": ["noto'g'ri variant 1"]
 }}
-
-Agar X yoki H bilan bog'liq imlo muammosi bo'lmasa:
-{{
-    "correct": null,
-    "incorrects": []
-}}
-            """
+"""
         }]
     )
 
@@ -36,4 +36,3 @@ Agar X yoki H bilan bog'liq imlo muammosi bo'lmasa:
         return result
     except json.JSONDecodeError:
         return None
-
