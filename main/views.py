@@ -13,12 +13,12 @@ def index_view(request):
             message = "So'z tarkibida Xx yoki Hh mavjud emas!"
         else:
 
-            correct = Correct.objects.filter(word__icontains=word).first()
+            correct = Correct.objects.filter(word=word).first()
             if correct:
                 incorrects = correct.incorrect_set.all()
 
             else:
-                incorrect = Incorrect.objects.filter(word__icontains=word).first()
+                incorrect = Incorrect.objects.filter(word=word).first()
                 if incorrect:
                     correct = incorrect.correct
                     incorrects = correct.incorrect_set.all()
